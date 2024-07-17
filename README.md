@@ -1,46 +1,71 @@
-# Simplify Sinhala and Singlish Language Conversion with `siconv` Python Package
+# # Sinhala to Singlish Transliterator
 
-Unlock efficient and accurate language conversion between Sinhala and Singlish effortlessly using the `siconv` Python package. Whether you need to transform Sinhala text to Singlish or vice versa, `siconv` offers a seamless and user-friendly solution.
+![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)
+![License](https://img.shields.io/badge/license-GPLv3-blue.svg)
 
-## Key Features:
 
-- **Sinhala to Singlish Conversion:** Easily convert Sinhala text to Singlish.
-- **Singlish to Sinhala Conversion:** Effortlessly transform Singlish text to Sinhala.
-- **Efficient and Accurate Algorithms:** `siconv` incorporates efficient and accurate language conversion algorithms for reliable results.
+A Python library for transliterating Sinhala script to Singlish (Romanized Sinhala) and vice versa. This project aims to provide a fast and reliable solution for converting between these two scripts.
 
-## Installation:
+## Features
 
-Install the package effortlessly using pip:
+- **Bidirectional Support**: Convert from Sinhala to Singlish and Singlish to Sinhala.
+- **Easy to Use**: Simple API for integrating into your projects.
+- **Customizable**: Extend and modify transliteration rules as needed.
 
-```bash
+## Installation
+
+Install the package from PyPI:
+
+```sh
 pip install siconv
 ```
 
 ## Usage Example:
 
 ```python
-from siconv import sinhala_to_singlish, singlish_to_sinhala
+from siconv import sinhala_to_singlish
 
-# Example Usage
-sinhala_text = "ආයුබෝවන්"
+sinhala_text = "ආයුබෝවන්, Sri Lanka"
 converted_singlish = sinhala_to_singlish(sinhala_text)
-print("Sinhala to Singlish:", converted_singlish)
+print("Sinhala to Singlish:", converted_singlish) # Output: ayubowan, Sri Lanka
+
+sinhala_text = "ආයුබෝවන්, Sri Lanka"
+converted_singlish = sinhala_to_singlish(sinhala_text, exclusive=True)
+print("Sinhala to Singlish:", converted_singlish) # Output: ayubowan
+```
+
+```python
+from siconv import singlish_to_sinhala
 
 singlish_text = "ayubowan"
 converted_sinhala = singlish_to_sinhala(singlish_text)
-print("Singlish to Sinhala:", converted_sinhala)
+print("Singlish to Sinhala:", converted_sinhala) # Output: ආයුබෝවන්
+
+singlish_text = "mk bn"
+converted_sinhala = singlish_to_sinhala(sinhala_text, slangs=True)
+print("Sinhala to Singlish:", converted_sinhala) # Output: මොකද කරන්නේ බන්
 ```
 
-## Advanced Applications:
+## Project Directory
 
-### 1. Fine-tuning Language Models:
-Utilize `siconv` to preprocess training data for fine-tuning large language models (LLMs) specifically tailored for Sinhala or Singlish language tasks.
-
-### 2. Building NLP Applications:
-Incorporate `siconv` into the development of Sinhala and Singlish applications, such as chatbots, sentiment analysis, or language translation, ensuring seamless text conversion.
-
-### 3. Tokenization:
-Enhance custom tokenization processes with `siconv` for accurate and consistent tokenization of Sinhala and Singlish text across diverse language-specific tasks.
-
-Empower your projects with the versatility of `siconv`, not only streamlining language conversion but also contributing to the broader landscape of natural language processing in Sinhala and Singlish.
-
+```
+siconv/
+│
+├── siconv/
+│   ├── __init__.py
+│   ├── to_singlish.py
+│   ├── to_sinhala.py
+│
+├── tests/
+│   ├── __init__.py
+│   ├── test_to_singlish.py
+│   ├── test_to_sinhala.py
+│
+├── data/
+│   ├── transliteration_rules.json
+│
+├── .gitignore
+├── LICENSE
+├── README.md
+├── setup.py
+```
