@@ -328,12 +328,8 @@ def insert_a(sin_text_list, mapped_text_list):
     return a_inserted_list
 
 
-def sinhala_to_singlish(input_text, exclusive=False):
-    if exclusive is True:
-        sin_text_list = [char for char in input_text if char not in symbols or english_alphabet]
-    else:
-        sin_text_list = [char for char in input_text]
-
+def sinhala_to_singlish(input_text):
+    sin_text_list = [char for char in input_text if (char not in symbols) and (char not in english_alphabet)]
     sin_text_cleaned = "".join(sin_text_list)
 
     mapped_text_list = [case1_map.get(letter, letter) for letter in sin_text_cleaned]
