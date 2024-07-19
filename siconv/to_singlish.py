@@ -1,56 +1,349 @@
-charactors = {
-    'අ': 'a', 'ආ': 'aa', 'ඇ': 'Aa', 'ඉ': 'i', 'ඊ': 'ii', 'උ': 'u', 'ඍ': 'Ru', 'එ': 'e', 'ඔ': 'o', 'ක': 'k', 'ග': 'g', 'ච': 'ch',
-    'ජ': 'j', 'ට': 't', 'ඩ': 'd', 'න': 'n', 'ප': 'p', 'බ': 'b', 'ල': 'l', 'ද': 'dh', 'ව': 'w', 'ශ': 'sh',
-    'භ': 'bh', 'ස': 's', 'හ': 'h', 'ය': 'y', 'ර': 'r', 'ම': 'm', 'ත': 'th', 'ඛ': 'K', ' ': ' ', 'ඳ': 'nndh',
-    'උ': 'u', 'ඔ': 'o', 'ඖ': 'au', 'ඞ': 'ng', 'ඟ': 'nng', 'ඡ': 'Ch', 'ඣ': 'q', 'ඝ' : 'G', 
-    'ඍ': 'R', 'ඎ': 'Ru', 'ඏ': 'A', 'ඐ': 'aa', 'ෆ': 'f', 'ඨ' : 'T', 'ථ' : 'Th', 'ඵ':'P', 
-    'ච': 'ch', 'ඩ': 'd', 'ළ': 'L', 'ණ': 'N', 'ධ': 'Dh', 'ඤ': 'KN', 'ඥ': 'zh', 'ය':'y',
-    'ෂ': 'Sh', 'හෝ': 'Sh', 'ඹ': 'B', 'ළු': 'Lu','ඦ': 'zja', 'ඬ': 'nnd', 'හෝ': 'q', 'ග':'g',
-    'ඥ': 'GN', 'ය': 'y', 'හෝ': 'A', 'හෝ': 'o', 'හෝ': 'v', 'හෝ': 'f', 'හෝ': 'Sh', 'ං': 'n',
-    'ඈ': 'Aa', 'ඌ': 'oo','ඎ': 'Ruu','ඒ': 'ee', 'ඓ': 'Ee', 'ඕ': 'o', 'ඖ': 'oe', 'ඪ' : 'D'
+vowels = [
+    "අ",
+    "ආ",
+    "ඇ",
+    "ඈ",
+    "ඉ",
+    "ඊ",
+    "උ",
+    "ඌ",
+    "ඍ",
+    "ඎ",
+    "ඏ",
+    "ඐ",
+    "එ",
+    "ඒ",
+    "ඓ",
+    "ඔ",
+    "ඕ",
+    "ඖ"
+]
+
+pillam = [
+    "ං",
+    "ඃ",
+    "්",
+    "ා",
+    "ැ",
+    "ෑ",
+    "ි",
+    "ී",
+    "ු",
+    "ූ",
+    "ෘ",
+    "ෙ",
+    "ේ",
+    "ෛ",
+    "ො",
+    "ෝ",
+    "ෞ",
+    "ෟ",
+    "ෲ",
+    "ෳ",
+    "\u200d"]
+
+special_character_list = ["1",
+                          "2",
+                          "3",
+                          "4",
+                          "5",
+                          "6",
+                          "7",
+                          "8",
+                          "9",
+                          "0",
+                          ":",
+                          ";",
+                          ".",
+                          "-",
+                          ",",
+                          "/",
+                          " ",
+                          "\n"]  # *** cant inseart "\" to here ??? :o
+
+english_alphabet = ["A",
+                    "B",
+                    "C",
+                    "D",
+                    "E",
+                    "F",
+                    "G",
+                    "H",
+                    "I",
+                    "J",
+                    "K",
+                    "L",
+                    "M",
+                    "N",
+                    "O",
+                    "P",
+                    "Q",
+                    "R",
+                    "S",
+                    "T",
+                    "U",
+                    "V",
+                    "W",
+                    "X",
+                    "Y",
+                    "Z",
+                    "a",
+                    "b",
+                    "c",
+                    "d",
+                    "e",
+                    "f",
+                    "g",
+                    "h",
+                    "i",
+                    "j",
+                    "k",
+                    "l",
+                    "m",
+                    "n",
+                    "o",
+                    "p",
+                    "q",
+                    "r",
+                    "s",
+                    "t",
+                    "u",
+                    "v",
+                    "w",
+                    "x",
+                    "y",
+                    "z"]
+
+symbols = ["~",
+           "`",
+           "!",
+           "@",
+           "#",
+           "$",
+           "%",
+           "^",
+           "&",
+           "*",
+           "(",
+           ")",
+           "_",
+           "+",
+           "=",
+           "[",
+           "]",
+           "{",
+           "}",
+           "|",
+           "\u0009",
+           "?",
+           "<",
+           ">"]
+
+case1_map = {
+    "ං": "ŋ",
+    "ඃ": "h",
+    "අ": "a",
+    "ආ": "a:",
+    "ඇ": "æ",
+    "ඈ": "æ:",
+    "ඉ": "i",
+    "ඊ": "i:",
+    "උ": "u",
+    "ඌ": "u:",
+    "ඍ": "ri",
+    "ඎ": "ru:",
+    "ඏ": "ilu",
+    "ඐ": "ilu:",
+    "එ": "e",
+    "ඒ": "e:",
+    "ඓ": "ai",
+    "ඔ": "o",
+    "ඕ": "o:",
+    "ඖ": "ou",
+    "ක": "k",
+    "ඛ": "k",
+    "ග": "ɡ",
+    "ඝ": "ɡ_",
+    "ඞ": "ŋ",
+    "ඟ": "ɠ",  # *** n දැමිය යුතු සඤ්ඥක අකුරක්
+    "ච": "c",
+    "ඡ": "c",
+    "ජ": "ɟ",
+    "ඣ": "ɟh",
+    "ඤ": "ɲ",
+    "ඥ": "jɲ",
+    "ඦ": "ʄ",  # *** n දැමිය යුතු සඤ්ඥක අකුරක් - ඉඦු ඉඦු one an only word in sinhala that has ඦ
+    "ට": "ʈ",
+    "ඨ": "ʈ",
+    "ඩ": "ɖ",
+    "ඪ": "ɖ",
+    "න": "n",
+    "ණ": "n",
+    "ඬ": "ɖ_",  # *** n දැමිය යුතු සඤ්ඥක අකුරක්
+    "ත": "t",
+    "ථ": "t",
+    "ද": "d",
+    "ධ": "d_",
+    "ඳ": "ɗ",  # *** n දැමිය යුතු සඤ්ඥක අකුරක් - e.g සඳතැන්න
+    "ප": "p",
+    "ඵ": "p",
+    "බ": "b",
+    "භ": "b_",
+    "ම": "m",
+    "ඹ": "ɓ",  # *** m දැමිය යුතු සඤ්ඥක අකුර
+    "ය": "j",
+    "ර": "r",
+    "ල": "l",
+    "ව": "w",
+    "ශ": "ʃ",
+    "ෂ": "ʃ",
+    "ස": "s",
+    "හ": "h",
+    "ළ": "l",
+    "ෆ": "f",
+    "්": "_",  # **** hal symbol
+    "\u200d": "_",  # **** for rakaransaya
+    "ා": "a:",
+    "ැ": "æ",
+    "ෑ": "æ:",
+    "ි": "i",
+    "ී": "i:",
+    "ු": "u",
+    "ූ": "u:",
+    "ෘ": "ru",
+    "ෲ": "ru:",
+    "ෙ": "e",
+    "ේ": "e:",
+    "ෛ": "ai",
+    "ො": "o",
+    "ෝ": "o:",
+    "ෞ": "ou",
+    "ෟ": "ou",
+}
+
+case2_map = {
+    "ɖ_": "nd",  # *** සඤ්ඥක අකුරු, so inseart n prior
+    "ɠ": "ng",  # *** සඤ්ඥක අකුරු, so inseart n prior
+    "ɗ": "nd",  # *** සඤ්ඥක අකුරු, so inseart n prior
+    "ʄ": "nj",  # *** සඤ්ඥක අකුරු, so inseart n prior
+    "ɓ": "mb",  # *** සඤ්ඥක අකුරු, so inseart n prior
+    "d_": "dh",  # *** mahapprana d_ -> dh
+    "b_": "bh",  # *** mahapprana b -> bh
+    "ɡ_": "gh",  # *** mahapprana g_ -> gh
+    "a": "a",  # vowel
+    "a:": "a",  # vowel
+    "æ": "e",  # This is special case. although it should be "a", in singlish we use "e" , For example ඇල්ල -> Ella
+    "æ:": "e",  # කුරුණෑගල -> kurunEgala
+    "i": "i",
+    "i:": "ee",  # sometimes "ea"
+    "u": "u",
+    "u:": "u",  # sometimes "ue"
+    "ri": "ri",
+    "ru:": "ruu",
+    "ilu": "ilu",
+    "ilu:": "ilue",
+    "e": "e",
+    "e:": "e",
+    "ai": "ai",
+    "o": "o",
+    "o:": "o",  # ex: හෝමාගම  -> homagama
+    "ɡ": "g",
+    "ɟ": "j",
+    "ɟh": "jh",
+    "ɲ": "kn",
+    "jɲ": "gn",
+    "d": "d",
+    "m": "m",
+    "j": "y",
+    "r": "r",
+    "w": "w",
+    "s": "s",
+    "l": "l",
+    "f": "f",
+    "_ ": "_",
+    "1": "1",
+    "2": "2",
+    "3": "3",
+    "4": "4",
+    "5": "5",
+    "6": "6",
+    "7": "7",
+    "8": "8",
+    "9": "9",
+    "0": "0",
+    ".": ".",
+    "-": "-",
+    "/": "/",
+    " ": " ",
+    ",": ",",
+    "\n": "\n",
+    ":": ":",
+    ";": "\""
+}
+
+case3_map = {
+    "ŋ": "n",  # sometimes to "ng"
+    "h": "h",
+    "k": "k",
+    "c": "ch",
+    "ʈ": "t",
+    "ɖ": "d",
+    "n": "n",
+    "t": "th",
+    "p": "p",
+    "b": "b",
+    "l": "l",
+    "ʃ": "sh",
+    "ou": "au",
 }
 
 
-pillam = {
-    'ා': 'aa', 'ැ': 'A', 'ෑ': 'ae', 'ි': 'i', 'ී': 'ii', 'ු': 'o', 'ූ': 'oo', 'ෘ': 'ru', 'ෙ': 'e', 'ේ': 'ei', 'ෛ': 'I',
-    'ො': 'o', 'ෝ': 'oe', 'ෞ': 'au', 'ෲ':'ruu',
-    '්‍ය': 'ya', '්‍ර': 'ra' , '්': ' '
-}
+def phoneme_to_english(word):
+    def translate(letter):
+        if letter in case3_map:
+            return case3_map.get(letter)
+        return case2_map.get(letter)
 
-vowels = ['අ', 'ආ', 'ඇ', 'ඈ', 'ඉ', 'ඊ', 'උ', 'ඌ', 'ඍ', 'ඎ', 'ඏ', 'ඐ', 'එ', 'ඒ', 'ඓ', 'ඔ', 'ඕ', 'ඖ', 'ං']
+    return list(filter(None, map(translate, word)))
 
-def sinhala_to_singlish(input_text):
-    output_array = []
-    input_text += ' '
-    try:
-        for i, char in enumerate(input_text[:-1]):
-            e_char = charactors.get(char)
-            p_char = pillam.get(char)
-            
-            
-            is_vowel = char in vowels
 
-            if e_char:
-                # Preserve spaces
-                output_array.append(char if char == ' ' else e_char)
+def insert_a(sin_text_list, mapped_text_list):
+    sin_text_list.append("_")  # Append a dummy non-effecting symbol at the end
+    a_inserted_list = []
 
-                # Check for pillam and append 'a'
-                next_char = input_text[i + 1]
-                output_array.append(pillam.get(next_char) or 'a' if e_char and char != ' ' else '')
+    for i, letter in enumerate(mapped_text_list):
+        a_inserted_list.append(letter)
 
-            elif not e_char and not p_char:
-                # Character not found in mapping, keep the original character
-                output_array.append(char)
-            
-            if is_vowel or char == '්':
-                if output_array:
-                    output_array.pop()
+        if (sin_text_list[i] in pillam) or (sin_text_list[i] in vowels):
+            continue
+        elif sin_text_list[i + 1] in pillam:
+            if sin_text_list[i + 1] == u"ං":  # Handle special cases
+                a_inserted_list.append('a')
+            continue
+        elif letter in special_character_list:
+            continue
+        else:
+            a_inserted_list.append('a')
 
-        # Add the last character to the output
-        output_array.append(charactors.get(input_text[-1], input_text[-1]))
+    return a_inserted_list
 
-    except Exception as e:
-        # Handle exceptions and print an error message
-        print(f"An error occurred: {e}")
 
-    return "".join(output_array)
+def sinhala_to_singlish(input_text, exclusive=False):
+    if exclusive is True:
+        sin_text_list = [char for char in input_text if char not in symbols or english_alphabet]
+    else:
+        sin_text_list = [char for char in input_text]
+
+    sin_text_cleaned = "".join(sin_text_list)
+
+    mapped_text_list = [case1_map.get(letter, letter) for letter in sin_text_cleaned]
+    a_inserted_list = insert_a(sin_text_list, mapped_text_list)
+    singlish_list = phoneme_to_english(a_inserted_list)
+
+    return "".join(singlish_list)
+
+
+if __name__ == "__main__":
+    sample_text = "ආයුබෝවන්, Sri Lanka"
+    transliterated_text = sinhala_to_singlish(sample_text)
+    print(transliterated_text)
